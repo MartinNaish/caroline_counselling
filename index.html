@@ -20,40 +20,40 @@
 	<div class='content row'>
 		<div class='sidebar large-3 medium-3 small-3 columns'>
 			<ul class='side-nav'>
-				<li><a href='#what' id='whatnav'>What is counselling?</a></li>
-				<li><a href='#help' id='helpnav'>How can counselling help?</a></li>
-				<li><a href='#length' id='lengthnav'>How long does counselling take?</a></li>
-				<li><a href='#price' id='pricenav'>Price</a></li>
-				<li><a href='#background' id='backgroundnav'>What is my background?</a></li>
-				<li><a href='#contact' id='contactnav'>Contact details</a></li>
-				<li><a href='#location' id='locationnav'>Location</a></li>
+				<li><a href='#what' class='nav' id='whatnav'>What is counselling?</a></li>
+				<li><a href='#help' class='nav' id='helpnav'>How can counselling help?</a></li>
+				<li><a href='#length' class='nav' id='lengthnav'>How long does counselling take?</a></li>
+				<li><a href='#price' class='nav' id='pricenav'>Price</a></li>
+				<li><a href='#background' class='nav' id='backgroundnav'>What is my background?</a></li>
+				<li><a href='#contact' class='nav' id='contactnav'>Contact details</a></li>
+				<li><a href='#location' class='nav' id='locationnav'>Location</a></li>
 			</ul>
 		</div>
 		<div class='content large-9 medium-9 small-9 columns'>
-			<a id='what'></a>
-			<div id='whatdiv'>
+			<a class='anchor' id='what'></a>
+			<div class='contentpage' id='whatdiv'>
 				<h3>What is counselling?</h3>
 				<p>Counselling provides the opportunity to think through the things that are causing distress, with an impartial, trained professional uninvolved in any other area of your life.</p>
 				<p>As a counsellor I do not give advice, as that would mean imposing my values on you. Instead, in a calm setting uninterrupted by the usual distractions of modern life, the emphasis is on confidentiality, support and understanding. I can help identify links between relationships and issues in your past, and your present-day ways of relating to others.</p>
 				<p>Awareness of these connections offers you the freedom to choose whether and how to change old patterns of behaviour.</p>
 			</div>
-			<a id='help'></a>
-			<div id='helpdiv'>
+			<a class='anchor' id='help'></a>
+			<div class='contentpage' id='helpdiv'>
 				<h3>How can counselling help?</h3>
 				<p>People come to counselling for a variety of reasons: with relationship difficulties, with anxiety or depression, after loss or bereavement, or through an undefined sense of unhappiness with life and a wish to change. I listen non-judgementally to any issues you want to discuss and together we think about how you deal with life. Counselling can alleviate anxiety, help come to terms with trauma, accept the past, and help you to move on to live life in a different way.</p>
 			</div>
-			<a id='length'></a>
-			<div id='lengthdiv'>
+			<a class='anchor' id='length'></a>
+			<div class='contentpage' id='lengthdiv'>
 				<h3>How long does counselling take?</h3>
 				<p>Each session lasts 50 minutes and we meet regularly on a weekly basis. We decide together the number of sessions that are suitable for you. Sometimes a few sessions are enough to provide support through a difficult period. If you are looking for more substantial change, more sessions may be appropriate.</p>
 			</div>
-			<a id='price'></a>
-			<div id='pricediv'>
+			<a class='anchor' id='price'></a>
+			<div class='contentpage' id='pricediv'>
 				<h3>Price</h3>
 				<p>I currently charge &pound;45 per session. This increases slightly every two years.</p>
 			</div>
-			<a id='background'></a>
-			<div id='backgrounddiv'>
+			<a class='anchor' id='background'></a>
+			<div class='contentpage' id='backgrounddiv'>
 				<h3>What is my background?</h3>
 				<p>I completed the Master's in Psychodynamic Practice at Oxford University, and worked as a counsellor at an NHS centre in Oxford from 2001 till 2008. I have been counselling in Newbury since 2006. I abide by the <a href='http://www.psychotherapy.org.uk/'>UKCP</a> and <a href='http://www.bacp.co.uk/'>BACP</a> codes of ethics.</p>
 				<p>I can provide counselling in German if required.</p>
@@ -65,8 +65,8 @@
 					<li>BACP member</li>
 				</ul>
 			</div>
-			<a id='contact'></a>
-			<div id='contactdiv'>
+			<a class='anchor' id='contact'></a>
+			<div class='contentpage' id='contactdiv'>
 				<h3>Contact details</h3>
 				<div class='vcard'>
 					<div class='fn'>Caroline Naish</div>
@@ -81,8 +81,8 @@
 					<a class='email' href='mailto:caroline.naish@googlemail.com?subject=Counselling+Enquiry'>caroline.naish@googlemail.com</a><p>
 				</div>
 			</div>
-			<a id='location'></a>
-			<div id='locationdiv'>
+			<a class='anchor' id='location'></a>
+			<div class='contentpage' id='locationdiv'>
 				<h3>Location</h3>
 				<p>Near Newbury town centre, easily accessible by car and 5 minutes' walk from the train station, 14 Porchester Road is the last house on the left before the corner with Chesterfield Road.</p>
 				<div class='flex-video'>
@@ -106,73 +106,65 @@
 
   	<script>
 
-  		var lastvisible = "whatdiv";
+  		var lastvisible = "what";
   		var iframe = $("#mapframe")[0];
 
   		function showSection(section) {
-  			$("#"+lastvisible).hide();
-  			$("#"+section).show();
+  			$("#"+lastvisible+"div").hide();
+  			$("#"+section+"div").show();
   			lastvisible = section;
-  			if (section === "locationdiv" && iframe) {
+  			if (section === "location" && iframe) {
   				iframe.src = iframe.src;
   				iframe = null;
   			}
   		}
 
 		$(document).ready(function() {
-	  		$("#what").remove();
-	  		$("#help").remove();
-	  		$("#length").remove();
-	  		$("#price").remove();
-	  		$("#background").remove();
-	  		$("#contact").remove();
-	  		$("#location").remove();
+
+			$(".anchor").each(function() {
+				$(this).remove();
+			});
 
 	  		$("#mapimg").remove();
 	  		iframe.style.display = '';
 
-	  		$("#whatnav").removeAttr("href");
-	  		$("#helpnav").removeAttr("href");
-	  		$("#lengthnav").removeAttr("href");
-	  		$("#pricenav").removeAttr("href");
-	  		$("#backgroundnav").removeAttr("href");
-	  		$("#contactnav").removeAttr("href");
-	  		$("#locationnav").removeAttr("href");
+	  		$(".nav").each(function() {
+	  			$(this).removeAttr("href");
+	  		});
 
 	  		$("#whatnav").click(function() {
-	  			showSection("whatdiv");
+	  			showSection("what");
 	  		});
 
 	  		$("#helpnav").click(function() {
-	  			showSection("helpdiv");
+	  			showSection("help");
 	  		});
 
 	  		$("#lengthnav").click(function() {
-	  			showSection("lengthdiv");
+	  			showSection("length");
 	  		});
 
 	  		$("#pricenav").click(function() {
-	  			showSection("pricediv");
+	  			showSection("price");
 	  		});
 
 	  		$("#backgroundnav").click(function() {
-	  			showSection("backgrounddiv");
+	  			showSection("background");
 	  		});
 
 	  		$("#contactnav").click(function() {
-	  			showSection("contactdiv");
+	  			showSection("contact");
 	  		});
 
 	  		$("#locationnav").click(function() {
-	  			showSection("locationdiv");
+	  			showSection("location");
 	  		});
 
-	  		$("#helpdiv").hide();
-	  		$("#lengthdiv").hide();
-	  		$("#pricediv").hide();
-	  		$("#backgrounddiv").hide();
-	  		$("#contactdiv").hide();
-	  		$("#locationdiv").hide();
+	  		$(".contentpage").each(function() {
+	  			$(this).hide();
+	  		});
+
+	  		$("#whatdiv").show();
 
 		});
 	</script>
