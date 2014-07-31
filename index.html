@@ -20,13 +20,13 @@
 	<div class='content row'>
 		<div class='sidebar large-3 medium-3 small-3 columns'>
 			<ul class='side-nav'>
-				<li><a href='#what' class='nav' id='whatnav'>What is counselling?</a></li>
-				<li><a href='#help' class='nav' id='helpnav'>How can counselling help?</a></li>
-				<li><a href='#length' class='nav' id='lengthnav'>How long does counselling take?</a></li>
-				<li><a href='#price' class='nav' id='pricenav'>Price</a></li>
-				<li><a href='#background' class='nav' id='backgroundnav'>What is my background?</a></li>
-				<li><a href='#contact' class='nav' id='contactnav'>Contact details</a></li>
-				<li><a href='#location' class='nav' id='locationnav'>Location</a></li>
+				<li id='whatli'><a href='#what' class='nav' id='whatnav'>What is counselling?</a></li>
+				<li id='helpli'><a href='#help' class='nav' id='helpnav'>How can counselling help?</a></li>
+				<li id='lengthli'><a href='#length' class='nav' id='lengthnav'>How long does counselling take?</a></li>
+				<li id='priceli'><a href='#price' class='nav' id='pricenav'>Price</a></li>
+				<li id='backgroundli'><a href='#background' class='nav' id='backgroundnav'>What is my background?</a></li>
+				<li id='contactli'><a href='#contact' class='nav' id='contactnav'>Contact details</a></li>
+				<li id='locationli'><a href='#location' class='nav' id='locationnav'>Location</a></li>
 			</ul>
 		</div>
 		<div class='content large-9 medium-9 small-9 columns'>
@@ -112,6 +112,8 @@
   		function showSection(section) {
   			$("#"+lastvisible+"div").hide();
   			$("#"+section+"div").show();
+  			$("#"+lastvisible+"li").removeClass("active");
+  			$("#"+section+"li").addClass("active");
   			lastvisible = section;
   			if (section === "location" && iframe) {
   				iframe.src = iframe.src;
@@ -165,6 +167,7 @@
 	  		});
 
 	  		$("#whatdiv").show();
+	  		$("#whatli").addClass("active");
 
 		});
 	</script>
