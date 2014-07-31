@@ -25,3 +25,15 @@ body, h1, h2, h3, h4, h5, h6 {
 #profile {
 	float: right;
 }
+
+.footer h6 {
+	font-size: 0.6rem;
+}
+
+#mapimg, #mapframe {
+	border: 0;
+}
+
+#mapframe {
+	display: none;
+}
