@@ -2,6 +2,8 @@
 <html xmlns='http://www.w3.org/1999/xhtml' >
 <head>
 	<meta charset='utf-8'>
+	<meta name='description' content='Information on counselling services in Newbury, Berkshire from Caroline Naish, a Psychodynamic Counsellor.'>
+	<meta name='author' content='Patrick Naish'>
 	<title>Counselling in Newbury</title>
 	<link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css' />
 	<link rel='stylesheet' href='css/foundation.css' />
@@ -18,6 +20,7 @@
 	<p>
 
 	<div class='content row'>
+		<!-- Anchor links are used here if JS is disabled. -->
 		<div class='sidebar large-3 medium-3 small-3 columns'>
 			<ul class='side-nav'>
 				<li id='whatli'><a href='#what' class='nav' id='whatnav'>What is counselling?</a></li>
@@ -29,6 +32,7 @@
 				<li id='locationli'><a href='#location' class='nav' id='locationnav'>Location</a></li>
 			</ul>
 		</div>
+		<!-- We display one page at a time if JS is enabled, or all the content at once if not. -->
 		<div class='content large-9 medium-9 small-9 columns'>
 			<a class='anchor' id='what'></a>
 			<div class='contentpage' id='whatdiv'>
@@ -85,6 +89,7 @@
 			<div class='contentpage' id='locationdiv'>
 				<h3>Location</h3>
 				<p>Near Newbury town centre, easily accessible by car and 5 minutes' walk from the train station, 14 Porchester Road is the last house on the left before the corner with Chesterfield Road.</p>
+				<!-- We display a static image if JS is disabled, or an embedded Google map if not. -->
 				<div class='flex-video'>
 					<a href='https://www.google.com/maps/place/14+Porchester+Rd,+Newbury,+West+Berkshire+RG14+7QJ,+UK/@51.393126,-1.32356,1458m/data=!3m1!1e3!4m2!3m1!1s0x4876a627c841080d:0xb2e1cb2b27ca3545?hl=en-GB'><img id='mapimg' src='images/map.png' alt='Map of 14 Porchester Road'></a>
 					<iframe id='mapframe' width='600' height='450' src='https://www.google.com/maps/embed/v1/place?q=14%20Porchester%20Road%2C%20Newbury%2C%20United%20Kingdom&amp;key=AIzaSyAZPG0jS6rs5l7jqMsFDtCmI7-VXjVCA-w&amp;maptype=satellite'></iframe>
@@ -102,12 +107,10 @@
 	<script src='js/vendor/modernizr.js'></script>
 	<script src="js/vendor/jquery.js"></script>
   	<script src="js/foundation/foundation.js"></script>
-  	<script src="js/foundation/foundation.magellan.js"></script>
 
   	<script>
-
-  		var lastvisible = "what";
-  		var iframe = $("#mapframe")[0];
+  		var lastvisible = "what"; //Set initial page to the first navbar option
+  		var iframe = $("#mapframe")[0]; //Get the iframe reference
 
   		function showSection(section) {
   			$("#"+lastvisible+"div").hide();
@@ -115,7 +118,7 @@
   			$("#"+lastvisible+"li").removeClass("active");
   			$("#"+section+"li").addClass("active");
   			lastvisible = section;
-  			if (section === "location" && iframe) {
+  			if (section === "location" && iframe) { //The first time we show the location page, we need to refresh the map
   				iframe.src = iframe.src;
   				iframe = null;
   			}
@@ -123,17 +126,19 @@
 
 		$(document).ready(function() {
 
-			$(".anchor").each(function() {
+			$(".anchor").each(function() { //Remove anchors, as we don't need them if we have JS
 				$(this).remove();
 			});
 
-	  		$("#mapimg").remove();
-	  		iframe.style.display = 'inherit';
+	  		$("#mapimg").remove(); //Similarly, we don't need the static map...
 
-	  		$(".nav").each(function() {
+	  		iframe.style.display = 'inherit'; //...so we can also display the iframe
+
+	  		$(".nav").each(function() { //Remove links to the anchors from the nav bar, as we'll be handling nav with JS
 	  			$(this).removeAttr("href");
 	  		});
 
+	  		/* Add click handlers to each nav bar item */
 	  		$("#whatnav").click(function() {
 	  			showSection("what");
 	  		});
@@ -161,12 +166,13 @@
 	  		$("#locationnav").click(function() {
 	  			showSection("location");
 	  		});
+	  		/* End of click handlers */
 
-	  		$(".contentpage").each(function() {
+	  		$(".contentpage").each(function() { //Hide every content page
 	  			$(this).hide();
 	  		});
 
-	  		$("#whatdiv").show();
+	  		$("#whatdiv").show(); //Display the first page
 	  		$("#whatli").addClass("active");
 
 		});
