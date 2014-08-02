@@ -4,6 +4,7 @@
 	<meta charset='utf-8'>
 	<meta name='description' content='Information on counselling in Newbury, Berkshire with Caroline Naish, psychodynamic counsellor.'>
 	<meta name='author' content='Patrick Naish'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Caroline Naish Counselling</title>
 	<link href='http://fonts.googleapis.com/css?family=Noto+Sans|Open+Sans' rel='stylesheet' type='text/css' />
 	<link rel='stylesheet' href='css/foundation.css' />
@@ -19,7 +20,7 @@
 
 	<div class='content row'>
 		<!-- Anchor links are used here if JS is disabled. -->
-		<div class='sidebar large-3 medium-3 small-3 columns'>
+		<div class='sidebar large-3 medium-3 columns'>
 			<ul class='side-nav'>
 				<li id='whatli'><a href='#what' class='nav' id='whatnav'>What is counselling?</a></li>
 				<li id='helpli'><a href='#help' class='nav' id='helpnav'>How can counselling help?</a></li>
@@ -31,11 +32,12 @@
 			</ul>
 		</div>
 		<!-- We display one page at a time if JS is enabled, or all the content at once if not. -->
-		<div class='content large-9 medium-9 small-9 columns'>
+		<div class='content large-9 medium-9 columns'>
 			<a class='anchor' id='what'></a>
 			<div class='contentpage' id='whatdiv'>
-				<img src='images/portrait.png' alt='A photo of Caroline Naish' id='portrait'>
+				<img src='images/portrait.png' alt='A photo of Caroline Naish' class='portrait large'>
 				<h3>What is counselling?</h3>
+				<img src='images/portrait.png' alt='A photo of Caroline Naish' class='portrait small'>
 				<p>Counselling provides the opportunity to think through the things that are causing distress, with an impartial, trained professional uninvolved in any other area of your life.</p>
 				<p>As a counsellor I do not give advice, as that would mean imposing my values on you. Instead, in a calm setting uninterrupted by the usual distractions of modern life, the emphasis is on confidentiality, support and understanding. I can help identify links between relationships and issues in your past, and your present-day ways of relating to others.</p>
 				<p>Awareness of these connections offers you the freedom to choose whether and how to change old patterns of behaviour.</p>
@@ -115,7 +117,7 @@
   	<script src="js/foundation/foundation.js"></script>
 
   	<script>
-  		var lastvisible = "what"; //Set initial page to the first navbar option
+  		var lastvisible; //Set initial page to the first navbar option
   		var iframe = $("#mapframe")[0]; //Get the iframe reference
 
   		function showSection(section) {
@@ -132,17 +134,9 @@
 
 		$(document).ready(function() {
 
-			$(".anchor").each(function() { //Remove anchors, as we don't need them if we have JS
-				$(this).remove();
-			});
-
 	  		$("#mapimg").remove(); //Similarly, we don't need the static map...
 
 	  		iframe.style.display = 'inherit'; //...so we can also display the iframe
-
-	  		$(".nav").each(function() { //Remove links to the anchors from the nav bar, as we'll be handling nav with JS
-	  			$(this).removeAttr("href");
-	  		});
 
 	  		/* Add click handlers to each nav bar item */
 	  		$("#whatnav").click(function() {
@@ -178,8 +172,14 @@
 	  			$(this).hide();
 	  		});
 
-	  		$("#whatdiv").show(); //Display the first page
-	  		$("#whatli").addClass("active");
+	  		if (window.location.hash.substr(1)) {
+	  			lastvisible = window.location.hash.substr(1);
+	  		} else {
+	  			lastvisible = "what";
+	  		}
+
+	  		$("#"+lastvisible+"div").show(); //Display the first page
+	  		$("#"+lastvisible+"li").addClass("active");
 
 		});
 	</script>

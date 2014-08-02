@@ -60,11 +60,37 @@ body {
 	user-select: none;
 }
 
-#portrait {
+.portrait {
 	float: right;
 	margin-left: 20px;
 	margin-bottom: 10px;
 }
+
+.portrait.small {
+	display: none;
+}
+
+@media only screen and (max-width: 40em) {
+	.portrait.large {
+		display: none;
+	}
+
+	.portrait.small {
+		display: block;
+		max-height: 16em;
+		float:right;
+	}
+
+	.side-nav li {
+		text-align: center;
+	}
+
+	.contentpage h3 {
+		text-align: center;
+	}
+
+}
+
 
 .contentpage{
 	max-height: 1000000px;
