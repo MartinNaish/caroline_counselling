@@ -66,6 +66,16 @@ body {
 	display: none;
 }
 
+.bacp {
+	float:right;
+	max-height: 100px;
+}
+
+.bacp.small {
+	display: none;
+}
+
+
 @media only screen and (max-width: 40em) {
 	.portrait.large {
 		display: none;
@@ -74,20 +84,26 @@ body {
 	.portrait.small {
 		display: block;
 		max-height: 16em;
-		float:right;
 	}
 
-	.side-nav li {
-		text-align: center;
+	.bacp.large {
+		display: none;
 	}
 
-	.contentpage h3 {
+	.bacp.small {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		float: none;
+	}
+
+	.side-nav li, .contentpage h3, .header {
 		text-align: center;
 	}
 
 }
 
-
-.contentpage{
+.contentpage {
 	max-height: 1000000px;
 }
+
