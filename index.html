@@ -19,22 +19,21 @@
 	</div>
 
 	<div class='content row'>
-		<!-- Anchor links are used here if JS is disabled. -->
 		<div class='sidebar large-3 medium-3 columns'>
 			<ul class='side-nav'>
-				<li id='whatli'><a href='#what' class='nav' id='whatnav'>What is counselling?</a></li>
-				<li id='helpli'><a href='#help' class='nav' id='helpnav'>How can counselling help?</a></li>
-				<li id='lengthli'><a href='#length' class='nav' id='lengthnav'>How long does counselling take?</a></li>
-				<li id='priceli'><a href='#price' class='nav' id='pricenav'>Price</a></li>
-				<li id='backgroundli'><a href='#background' class='nav' id='backgroundnav'>What is my background?</a></li>
-				<li id='contactli'><a href='#contact' class='nav' id='contactnav'>Contact details</a></li>
-				<li id='locationli'><a href='#location' class='nav' id='locationnav'>Location</a></li>
+				<li class='what'><a href='#what' class='nav what'>What is counselling?</a></li>
+				<li class='help'><a href='#help' class='nav help'>How can counselling help?</a></li>
+				<li class='length'><a href='#length' class='nav length'>How long does counselling take?</a></li>
+				<li class='price'><a href='#price' class='nav price'>Price</a></li>
+				<li class='background'><a href='#background' class='nav background'>What is my background?</a></li>
+				<li class='contact'><a href='#contact' class='nav contact'>Contact details</a></li>
+				<li class='location'><a href='#location' class='nav location'>Location</a></li>
 			</ul>
 		</div>
 		<!-- We display one page at a time if JS is enabled, or all the content at once if not. -->
 		<div class='content large-9 medium-9 columns'>
 			<a class='anchor' id='what'></a>
-			<div class='contentpage' id='whatdiv'>
+			<div class='contentpage what'>
 				<img src='images/portrait.png' alt='A photo of Caroline Naish' class='portrait large'>
 				<h3>What is counselling?</h3>
 				<img src='images/portrait.png' alt='A photo of Caroline Naish' class='portrait small'>
@@ -43,22 +42,22 @@
 				<p>Awareness of these connections offers you the freedom to choose whether and how to change old patterns of behaviour.</p>
 			</div>
 			<a class='anchor' id='help'></a>
-			<div class='contentpage' id='helpdiv'>
+			<div class='contentpage help'>
 				<h3>How can counselling help?</h3>
 				<p>People come to counselling for a variety of reasons: with relationship difficulties, with anxiety or depression, after loss or bereavement, or through an undefined sense of unhappiness with life and a wish to change. I listen non-judgementally to any issues you want to discuss and together we think about how you deal with life. Counselling can help in many ways including alleviating anxiety, coming to terms with trauma, or accepting the past, enabling you to move on and live life more freely.</p>
 			</div>
 			<a class='anchor' id='length'></a>
-			<div class='contentpage' id='lengthdiv'>
+			<div class='contentpage length'>
 				<h3>How long does counselling take?</h3>
 				<p>Each session lasts 50 minutes and we meet regularly on a weekly basis. We decide together the number of sessions that are suitable for you. Sometimes a few sessions are enough to provide support through a difficult period. If you are looking for more substantial change, more sessions may be appropriate.</p>
 			</div>
 			<a class='anchor' id='price'></a>
-			<div class='contentpage' id='pricediv'>
+			<div class='contentpage price'>
 				<h3>Price</h3>
 				<p>I currently charge &pound;45 per session. This increases slightly each year.</p>
 			</div>
 			<a class='anchor' id='background'></a>
-			<div class='contentpage' id='backgrounddiv'>
+			<div class='contentpage background'>
 				<h3>What is my background?</h3>
 				<p>I completed my Master's in Psychodynamic Practice at Oxford University, and worked as a counsellor at an NHS centre in Oxford from 2001 until 2008. I have been working with individual adults in private practice since 2006. In addition, since 2010 I have counselled young people at a local university.</p>
 				<p>I abide by the <a href='http://www.psychotherapy.org.uk/'>UKCP</a> and <a href='http://www.bacp.co.uk/'>BACP</a> codes of ethics.</p>
@@ -72,7 +71,7 @@
 				</ul>
 			</div>
 			<a class='anchor' id='contact'></a>
-			<div class='contentpage' id='contactdiv'>
+			<div class='contentpage contact'>
 				<h3>Contact details</h3>
 				<div class='vcard'>
 					<div class='fn'>Caroline Naish</div>
@@ -94,7 +93,7 @@
 				<p></p>
 			</div>
 			<a class='anchor' id='location'></a>
-			<div class='contentpage' id='locationdiv'>
+			<div class='contentpage location'>
 				<h3>Location</h3>
 				<p>Near Newbury town centre, easily accessible by car and 5 minutes' walk from the train station, 14 Porchester Road is the last house on the left before the corner with Chesterfield Road.</p>
 				<!-- We display a static image if JS is disabled, or an embedded Google map if not. -->
@@ -117,14 +116,14 @@
   	<script src="js/foundation/foundation.js"></script>
 
   	<script>
-  		var lastvisible; //Set initial page to the first navbar option
+  		var lastvisible;
   		var iframe = $("#mapframe")[0]; //Get the iframe reference
 
-  		function showSection(section) {
-  			$("#"+lastvisible+"div").hide();
-  			$("#"+section+"div").show();
-  			$("#"+lastvisible+"li").removeClass("active");
-  			$("#"+section+"li").addClass("active");
+  		function showSection(section) { //Switch the visible content page
+  			$(".contentpage."+lastvisible).hide();
+  			$(".contentpage."+section).show();
+  			$("li."+lastvisible).removeClass("active");
+  			$("li."+section).addClass("active");
   			lastvisible = section;
   			if (section === "location" && iframe) { //The first time we show the location page, we need to refresh the map
   				iframe.src = iframe.src;
@@ -134,36 +133,36 @@
 
 		$(document).ready(function() {
 
-	  		$("#mapimg").remove(); //Similarly, we don't need the static map...
+	  		$("#mapimg").remove(); //If we have JS, we don't need the static map...
 
 	  		iframe.style.display = 'inherit'; //...so we can also display the iframe
 
 	  		/* Add click handlers to each nav bar item */
-	  		$("#whatnav").click(function() {
+	  		$(".nav.what").click(function() {
 	  			showSection("what");
 	  		});
 
-	  		$("#helpnav").click(function() {
+	  		$(".nav.help").click(function() {
 	  			showSection("help");
 	  		});
 
-	  		$("#lengthnav").click(function() {
+	  		$(".nav.length").click(function() {
 	  			showSection("length");
 	  		});
 
-	  		$("#pricenav").click(function() {
+	  		$(".nav.price").click(function() {
 	  			showSection("price");
 	  		});
 
-	  		$("#backgroundnav").click(function() {
+	  		$(".nav.background").click(function() {
 	  			showSection("background");
 	  		});
 
-	  		$("#contactnav").click(function() {
+	  		$(".nav.contact").click(function() {
 	  			showSection("contact");
 	  		});
 
-	  		$("#locationnav").click(function() {
+	  		$(".nav.location").click(function() {
 	  			showSection("location");
 	  		});
 	  		/* End of click handlers */
@@ -172,14 +171,14 @@
 	  			$(this).hide();
 	  		});
 
-	  		if (window.location.hash.substr(1)) {
+	  		if (window.location.hash.substr(1)) { //Get the anchor part of the URL, if it exists
 	  			lastvisible = window.location.hash.substr(1);
 	  		} else {
 	  			lastvisible = "what";
 	  		}
 
-	  		$("#"+lastvisible+"div").show(); //Display the first page
-	  		$("#"+lastvisible+"li").addClass("active");
+	  		$(".contentpage."+lastvisible).show();
+	  		$("li."+lastvisible).addClass("active");
 
 		});
 	</script>
