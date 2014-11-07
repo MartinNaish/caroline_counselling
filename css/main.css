@@ -4,7 +4,7 @@ body, h1, h2, h3, h4, h5, h6, .side-nav li a {
 
 body {
 	background:
-		url('../images/tree.png') bottom left no-repeat,
+		url('../images/tree.png') bottom left no-repeat fixed,
 		url('../images/sky.jpg') top left repeat-x;
 }
 
