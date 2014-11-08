@@ -1,3 +1,8 @@
+html {
+	height: 100%;
+	min-height: 100%;
+}
+
 body, h1, h2, h3, h4, h5, h6, .side-nav li a {
 	font-family: 'Open Sans', sans-serif;
 }
@@ -6,6 +11,7 @@ body {
 	background:
 		url('../images/tree.png') bottom left no-repeat fixed,
 		url('../images/sky.jpg') top left repeat-x;
+	min-height: 100%;
 }
 
 .gmap-icons img{
