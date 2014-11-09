@@ -135,35 +135,9 @@
 
 		  		iframe.style.display = 'inherit'; //...so we can also display the iframe
 
-		  		/* Add click handlers to each nav bar item */
-		  		$("nav a.what").click(function() {
-		  			showSection("what");
+		  		$("nav").delegate("a", "click", function() { //Add click handlers to nav items
+		  			showSection($(this).attr("class"));
 		  		});
-
-		  		$("nav a.help").click(function() {
-		  			showSection("help");
-		  		});
-
-		  		$("nav a.length").click(function() {
-		  			showSection("length");
-		  		});
-
-		  		$("nav a.price").click(function() {
-		  			showSection("price");
-		  		});
-
-		  		$("nav a.background").click(function() {
-		  			showSection("background");
-		  		});
-
-		  		$("nav a.contact").click(function() {
-		  			showSection("contact");
-		  		});
-
-		  		$("nav a.location").click(function() {
-		  			showSection("location");
-		  		});
-		  		/* End of click handlers */
 
 		  		$("section").each(function() { //Hide every content page
 		  			$(this).hide();
@@ -175,8 +149,7 @@
 		  			lastvisible = "what";
 		  		}
 
-		  		$("section#"+lastvisible).show();
-		  		$("nav li."+lastvisible).addClass("active");
+		  		showSection(lastvisible);
 
 			});
 		</script>
